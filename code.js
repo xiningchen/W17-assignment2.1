@@ -3,7 +3,7 @@
 //
 function getStats(txt) {
     return {
-        nChars: 123,
+        nChars: countChar(txt),
         nWords: 22,
         nLines: 10,
         nNonEmptyLines: 22,
@@ -13,5 +13,10 @@ function getStats(txt) {
         longestWords: ["xxxxxxxxx", "123444444"],
         mostFrequentWords: ["hello(7)", "world(1)"]
     };
+}
+
+function countChar(txt){
+	
+	return 14;
 }
 
