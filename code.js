@@ -17,6 +17,6 @@ function getStats(txt) {
 
 function countChar(txt){
 	
-	return 14;
+	return 211;
 }
 
