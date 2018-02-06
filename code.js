@@ -3,8 +3,8 @@
 //
 function getStats(txt) {
     return {
-        nChars: countChar(txt),
-        nWords: 22,
+        nChars: numChars(txt),
+        nWords: numWords(txt),
         nLines: 10,
         nNonEmptyLines: 22,
         averageWordLength: 3.3,
@@ -15,7 +15,15 @@ function getStats(txt) {
     };
 }
 
-function countChar(txt){
+// function for counting input character length
+function numChar(txt){
 	return txt.length;
 }
+
+// function for coutning number of words
+function numWords(txt){
+	
+}
+
+
 
