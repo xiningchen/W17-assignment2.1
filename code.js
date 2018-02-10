@@ -8,10 +8,10 @@ function getStats(txt) {
 	// 
 
     return {
-        nChars: stats[0],
-        nWords: stats[1],
-        nLines: stats[2],
-        nNonEmptyLines: stats[3],
+        nChars: stats.nChars,
+        nWords: stats.nWords,
+        nLines: stats.nLines,
+        nNonEmptyLines: stats.,
         averageWordLength: 0,
         maxLineLength: 0,
         palindromes: ["12321", "kayak", "mom"],
@@ -33,12 +33,12 @@ function clean(txt){
 	let lines = txt.split("\n");
 	let nLines = txt.split("\n").length;
 	
-	let nonEmptyCount=0;
+	let nNonEmptyLines=0;
 	let nWords=0;
 	// loop through every line and clean while tracking non-empty lines
 	for(let line of lines){
 		if(line.trim().length != 0){
-			nonEmptyCount=nonEmptyCount+1;
+			nNonEmptyLines+=1;
 			
 			// since it's not empty, clean up words using regular expressions
 			line = line.replace(/\W|\_/g, " ");
@@ -51,7 +51,7 @@ function clean(txt){
 		nChars, //*
 		nWords, //*
 		nLines, //*
-		nonEmptyCount //*
+		nNonEmptyLines //*
 	};
 }
 
