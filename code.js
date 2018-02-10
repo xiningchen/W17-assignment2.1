@@ -80,14 +80,14 @@ function clean(txt){
 		avgWordLength = nCharWords/nWords;
 		let a = [];
 		for(let key of freqWords){
-			let b =[key, freqWords[key]];
-			a.push(b);
+			a.push([freqWords[key], key]);
 		}
 		a.sort(decendingOrder); // sort by frequency
 		
 		let mostFrequentWords = [];
 		for(let i=0; i<10; i++){
-			mostFrequentWords[i] = a[i]+"("+i+")";
+			let b = a[i];
+			mostFrequentWords[i] = b[1]+"("+b[0]+")";
 		}
 		
 		// process words
