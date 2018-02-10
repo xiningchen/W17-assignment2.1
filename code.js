@@ -102,7 +102,14 @@ function clean(txt){
 		let allWords = nTxt.trim().split(" ");
 		
 		allWords.sort(lengthComparison);
-		
+		count=0;
+		for(let w of allWords){
+			longestWords.push(w);
+			count +=1;
+			if(count===9){
+				break;
+			}
+		}
 		
 /*
 			1) Palindromes
