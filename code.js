@@ -209,7 +209,3 @@ decendingOrder = function(w1, w2){
 	}
 }
 
-
-specialSort = function(w1, w2){
-	if()
-}
