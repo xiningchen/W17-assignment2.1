@@ -78,26 +78,26 @@ function clean(txt){
 		}
 	
 		avgWordLength = nCharWords/nWords;
+		
 		let a = [];
-		for(let key of freqWords){
+		for(let key in freqWords){
 			a.push([freqWords[key], key]);
 		}
 		a.sort(decendingOrder); // sort by frequency
 		
 		let mostFrequentWords = [];
-		for(let i=0; i<10; i++){
-			let b = a[i];
-			mostFrequentWords[i] = b[1]+"("+b[0]+")";
+		for(let i of a){
+			mostFrequentWords.push(i[1] + "("+i[0]+")");
 		}
 		
 		// process words
-		
+		/*
 		let nTxt = txt.toLowerCase();
 		nTxt = nTxt.replace(/\W|\_/g, " ");
 		nTxt = nTxt.replace(/\s+/g, " ");
 		let words = line.trim().split(" ");
 		
-		
+		*/
 		
 		
 /*
