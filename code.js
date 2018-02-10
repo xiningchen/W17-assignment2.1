@@ -52,13 +52,15 @@ function clean(txt){
 			// since it's not empty, clean up words using regular expressions
 			line = line.toLowerCase();
 			line = line.replace(/\W|\_/g, " ");
+			line = line.replace(/\s+/g, " ");
+			
 			let words = line.trim().split(" ");
 			nWords += words.length;
 			
 /*
-			for(let w of words){
-				nCharWords += w.length;
-			}
+	Q1: Why is his longest words contain different lengths? is it longest word in each line???
+	Q2: 
+	
 */
 			// sort words
 			let wSorted = words.sort(lengthComparison);
