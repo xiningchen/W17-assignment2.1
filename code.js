@@ -15,7 +15,7 @@ function getStats(txt) {
         averageWordLength: stats.avgWordLength,
         maxLineLength: stats.maxLineLength,
         palindromes: ["12321", "kayak", "mom"],
-        longestWords: ["xxxxxxxxx", "123444444"],
+        longestWords: stats.longestWords,
         mostFrequentWords: ["hello(7)", "world(1)"]
     };
 }
@@ -37,6 +37,8 @@ function clean(txt){
 	let nNonEmptyLines=0;
 	let nWords=0;
 	let nCharWords=0;
+	let longestWordLength=0;
+	let longestWords=[];
 	
 	// loop through every line and clean while tracking non-empty lines
 	for(let line of lines){
@@ -52,9 +54,27 @@ function clean(txt){
 			let words = line.trim().split(" ");
 			nWords += words.length;
 			
-			// process each word
+/*
 			for(let w of words){
 				nCharWords += w.length;
+			}
+*/
+			// sort words
+			let wSorted = words.sort(lengthComparison);
+			
+			// process each word
+			for(let w of wSorted){
+				nCharWords += w.length;
+				if(w.length > longestWordLength){
+					// set new longest word length
+					longestWordLength = w.length;
+					// reset current record of longest words
+					longestWords=[];
+				}
+				if(w.length === longestWordLength){
+					// add to longest words array
+					longestWords.push(w);
+				}
 			}
 		}
 	}
@@ -67,8 +87,21 @@ function clean(txt){
 		nLines, //*
 		nNonEmptyLines, //*
 		avgWordLength, //* 
-		maxLineLength //*
+		maxLineLength, //*
+		longestWords
 	};
+}
+
+// comparison function for sorting of longest length 
+// - provided from TA during tutorial but adapted so that sorting will sort longest to the front
+lengthComparison = function(w1, w2){
+	if(w1.length > w2.length){
+		return -1
+	}else if (w2.length > w1.length){
+		return 1
+	}else{
+		return 0
+	}
 }
 
 /*
