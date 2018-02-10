@@ -43,7 +43,7 @@ function clean(txt){
 	
 	if(txt.length===0){
 		// skip all process and set stuff to 0
-		nlines=0;
+		nLines=0;
 	}else{
 		// loop through every line and clean while tracking non-empty lines
 		for(let line of lines){
