@@ -16,7 +16,7 @@ function getStats(txt) {
         maxLineLength: stats.maxLineLength,
         palindromes: ["12321", "kayak", "mom"],
         longestWords: stats.longestWords,
-        mostFrequentWords: stats.mostFrequenWords
+        mostFrequentWords: stats.mostFrequentWords
     };
 }
 
