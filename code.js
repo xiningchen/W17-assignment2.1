@@ -28,6 +28,7 @@ function numChar(txt){
 
 // function for cleaning/normalizing text 
 function clean(txt){
+	txt=txt.trim();
 	let nChars = txt.length;
 	
 	let lines = txt.split("\n");
