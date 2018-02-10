@@ -16,7 +16,7 @@ function getStats(txt) {
         maxLineLength: stats.maxLineLength,
         palindromes: ["12321", "kayak", "mom"],
         longestWords: stats.longestWords,
-        mostFrequentWords: ["hello(7)", "world(1)"]
+        mostFrequentWords: stats.mostFrequenWords
     };
 }
 
@@ -38,9 +38,10 @@ function clean(txt){
 	let nWords=0;
 	let nCharWords=0;
 //	let longestWordLength=0;
-//	let longestWords=[];
+	let longestWords=[];
 	let avgWordLength=0;
 	let freqWords={};
+	let mostFrequentWords = [];
 	
 	if(txt.length===0){
 		// skip all process and set stuff to 0
@@ -85,19 +86,22 @@ function clean(txt){
 		}
 		a.sort(decendingOrder); // sort by frequency
 		
-		let mostFrequentWords = [];
+		let count=0;
 		for(let i of a){
 			mostFrequentWords.push(i[1] + "("+i[0]+")");
+			count +=1;
+			if(count===9){
+				break;
+			}
 		}
 		
-		// process words
-		/*
+		// process all words
 		let nTxt = txt.toLowerCase();
 		nTxt = nTxt.replace(/\W|\_/g, " ");
 		nTxt = nTxt.replace(/\s+/g, " ");
-		let words = line.trim().split(" ");
+		let allWords = nTxt.trim().split(" ");
 		
-		*/
+		allWords.sort(lengthComparison);
 		
 		
 /*
