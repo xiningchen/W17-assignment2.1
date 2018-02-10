@@ -14,19 +14,13 @@ function getStats(txt) {
         nNonEmptyLines: stats.nNonEmptyLines,
         averageWordLength: stats.avgWordLength,
         maxLineLength: stats.maxLineLength,
-        palindromes: ["12321", "kayak", "mom"],
+        palindromes: stats.palindromes,
         longestWords: stats.longestWords,
         mostFrequentWords: stats.mostFrequentWords
     };
 }
 
-/* function for counting input character length
-function numChar(txt){
-	return txt.length;
-}
-*/
 
-// function for cleaning/normalizing text 
 function clean(txt){
 	let nChars = txt.length;
 	
@@ -42,6 +36,7 @@ function clean(txt){
 	let avgWordLength=0;
 	let freqWords={};
 	let mostFrequentWords = [];
+	let palindromes=[];
 	
 	if(txt.length===0){
 		// skip all process and set stuff to 0
@@ -72,6 +67,16 @@ function clean(txt){
 						freqWords[w] += 1;	
 					}else{
 						freqWords[w] = 1;
+					}
+					
+					// check if the word is a palindroen( reverse word, check if it's equal)
+					let wInv = "";
+					for(let i=w.length-1; i>-1; i--){
+						wInv += w[i];
+					}
+					if(wInv === w){
+						// then it's a palindrone
+						palindromes.push(w);
 					}
 				
 				}
@@ -117,31 +122,6 @@ function clean(txt){
 			3) longest words
 */
 		
-		
-		/*
-			// sort words
-			// let wSorted = words.sort(lengthComparison);
-		
-			// process each word
-			for(let w of wSorted){
-				nCharWords += w.length;
-				
-				
-				
-				
-				if(w.length > longestWordLength){
-					// set new longest word length
-					longestWordLength = w.length;
-					// reset current record of longest words
-					longestWords=[];
-				}
-				
-				if(w.length === longestWordLength){
-					// add to longest words array
-					longestWords.push(w);
-				}
-				*/
-		
 	}
 	
 	return {
@@ -152,7 +132,8 @@ function clean(txt){
 		avgWordLength, //* 
 		maxLineLength, //*
 		longestWords,
-		mostFrequentWords
+		mostFrequentWords, 
+		palindromes
 	};
 }
 
@@ -177,20 +158,4 @@ decendingOrder = function(w1, w2){
 		return 0
 	}
 }
-
-/*
-// counts number of non-empty lines
-function nNonEmptyLines(txt){
-	let lines = txt.split("\n");
-	
-	let count=0;
-	for(let line of lines){
-		if(line.trim().length != 0){
-			count=count+1;
-		}
-	}
-	
-	return count;
-}
-*/
 
