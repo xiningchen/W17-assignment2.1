@@ -87,22 +87,60 @@ function clean(txt){
 	
 		avgWordLength = nCharWords/nWords;
 		
-		let a = [];
+		// take frequency object and make it an array
+		let freqWordsArray = [];
 		for(let key in freqWords){
-			a.push([freqWords[key], key]);
+			freqWordsArray.push([freqWords[key], key]);
 		}
-		a.sort(decendingOrder); // sort by frequency
-		
+		freqWordsArray.sort(decendingOrder); // sort by frequency
+	
+		// get the top 10 most frequent words
 		let count=0;
-		for(let i of a){
-			mostFrequentWords.push(i[1] + "("+i[0]+")");
-			count +=1;
-			if(count===10){
-				break;
+		let currentFreq = 0;
+		let temp=[];
+		// divide into subarrays based on frequency 
+		for(let a of freqWordsArray){
+			if(a[0] != currentFreq){
+				//update freq
+				currentFreq = a[0];
+
+				if(temp.length===0){
+					//skip
+				}else{
+					// sort temp
+					temp.sort();
+					// add temp into most frequent words
+					for (let t of temp){
+						mostFrequentWords.push(t[0] + "("+t[1]+")");	
+
+						count +=1;
+						if(count===10){
+							break;
+						}
+					}
+				}
+
+				// clear temp
+				temp = [];
+			}
+
+			
+			temp.push([a[1], a[0]]);
+		}
+
+
+		if(mostFrequentWords.length <10){
+			// the remaining words are in temp, add it to most frequent word
+			temp.sort();
+			let n = 10-mostFrequentWords.length
+			for(let i=0; i<n; i++){
+				let t = temp[i];
+				mostFrequentWords.push(t[0] + "("+t[1]+")");	
 			}
 		}
 		
-		// process all words
+
+		// process all words to get longest words
 		let nTxt = txt.toLowerCase();
 		nTxt = nTxt.replace(/\W|\_/g, " ");
 		nTxt = nTxt.replace(/\s+/g, " ");
@@ -111,7 +149,7 @@ function clean(txt){
 		allWords.sort(lengthComparison);
 		count=0;
 		for(let w of allWords){
-			if(w in longestWords){
+			if(longestWords.indexOf(w) != -1){
 				// skip!
 			}else{
 				longestWords.push(w);
@@ -171,3 +209,7 @@ decendingOrder = function(w1, w2){
 	}
 }
 
+
+specialSort = function(w1, w2){
+	if()
+}
