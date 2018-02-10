@@ -97,7 +97,7 @@ function clean(txt){
 		for(let i of a){
 			mostFrequentWords.push(i[1] + "("+i[0]+")");
 			count +=1;
-			if(count===9){
+			if(count===10){
 				break;
 			}
 		}
@@ -113,7 +113,7 @@ function clean(txt){
 		for(let w of allWords){
 			longestWords.push(w);
 			count +=1;
-			if(count===9){
+			if(count===10){
 				break;
 			}
 		}
