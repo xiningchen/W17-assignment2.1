@@ -37,9 +37,10 @@ function clean(txt){
 	let nNonEmptyLines=0;
 	let nWords=0;
 	let nCharWords=0;
-	let longestWordLength=0;
-	let longestWords=[];
+//	let longestWordLength=0;
+//	let longestWords=[];
 	let avgWordLength=0;
+	let freqWords={};
 	
 	if(txt.length===0){
 		// skip all process and set stuff to 0
@@ -61,33 +62,75 @@ function clean(txt){
 			
 				let words = line.trim().split(" ");
 				nWords += words.length;
-			
-	/*
-		Q1: Why is his longest words contain different lengths? is it longest word in each line???
-		Q2: 
-	
-	*/
-				// sort words
-				let wSorted = words.sort(lengthComparison);
-			
+				
 				// process each word
 				for(let w of wSorted){
 					nCharWords += w.length;
-					if(w.length > longestWordLength){
-						// set new longest word length
-						longestWordLength = w.length;
-						// reset current record of longest words
-						longestWords=[];
+					
+					if(w in freqWords){
+						freqWords[w] += 1;	
+					}else{
+						freqWords[w] = 1;
 					}
-					if(w.length === longestWordLength){
-						// add to longest words array
-						longestWords.push(w);
-					}
+				
 				}
 			}
 		}
 	
 		avgWordLength = nCharWords/nWords;
+		let a = [];
+		for(let key of freqWords){
+			let b =[key, freqWords[key]];
+			a.push(b);
+		}
+		a.sort(decendingOrder); // sort by frequency
+		
+		let mostFrequentWords = [];
+		for(let i=0; i<10; i++){
+			mostFrequentWords[i] = a[i]+"("+i+")";
+		}
+		
+		// process words
+		
+		let nTxt = txt.toLowerCase();
+		nTxt = nTxt.replace(/\W|\_/g, " ");
+		nTxt = nTxt.replace(/\s+/g, " ");
+		let words = line.trim().split(" ");
+		
+		
+		
+		
+/*
+			1) Palindromes
+			2) most frequent words
+			3) longest words
+*/
+		
+		
+		/*
+			// sort words
+			// let wSorted = words.sort(lengthComparison);
+		
+			// process each word
+			for(let w of wSorted){
+				nCharWords += w.length;
+				
+				
+				
+				
+				if(w.length > longestWordLength){
+					// set new longest word length
+					longestWordLength = w.length;
+					// reset current record of longest words
+					longestWords=[];
+				}
+				
+				if(w.length === longestWordLength){
+					// add to longest words array
+					longestWords.push(w);
+				}
+				*/
+		
 	}
 	
 	return {
@@ -97,7 +140,8 @@ function clean(txt){
 		nNonEmptyLines, //*
 		avgWordLength, //* 
 		maxLineLength, //*
-		longestWords
+		//longestWords
+		mostFrequentWords
 	};
 }
 
@@ -107,6 +151,16 @@ lengthComparison = function(w1, w2){
 	if(w1.length > w2.length){
 		return -1
 	}else if (w2.length > w1.length){
+		return 1
+	}else{
+		return 0
+	}
+}
+
+decendingOrder = function(w1, w2){
+	if(w1 > w2){
+		return -1
+	}else if (w2 > w1){
 		return 1
 	}else{
 		return 0
