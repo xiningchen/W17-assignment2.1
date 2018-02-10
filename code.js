@@ -50,6 +50,7 @@ function clean(txt){
 				maxLineLength=line.length;
 			}
 			// since it's not empty, clean up words using regular expressions
+			line = line.toLowerCase();
 			line = line.replace(/\W|\_/g, " ");
 			let words = line.trim().split(" ");
 			nWords += words.length;
