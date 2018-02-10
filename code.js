@@ -52,7 +52,7 @@ function clean(txt){
 		nWords, //*
 		nLines, //*
 		nonEmptyCount //*
-	}
+	};
 }
 
 /*
