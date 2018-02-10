@@ -39,6 +39,7 @@ function clean(txt){
 	let nCharWords=0;
 	let longestWordLength=0;
 	let longestWords=[];
+	let avgWordLength=0;
 	
 	if(txt.length===0){
 		// skip all process and set stuff to 0
@@ -86,7 +87,7 @@ function clean(txt){
 			}
 		}
 	
-		let avgWordLength = nCharWords/nWords;
+		avgWordLength = nCharWords/nWords;
 	}
 	
 	return {
