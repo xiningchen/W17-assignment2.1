@@ -70,14 +70,16 @@ function clean(txt){
 					}
 					
 					// check if the word is a palindroen( reverse word, check if it's equal)
-					let wInv = "";
-					for(let i=w.length-1; i>-1; i--){
-						wInv += w[i];
-					}
-					if(wInv === w){
-						// then it's a palindrone
-						palindromes.push(w);
-					}
+					if(w.length>1){
+						let wInv = "";
+						for(let i=w.length-1; i>-1; i--){
+							wInv += w[i];
+						}
+						if(wInv === w){
+							// then it's a palindrone
+							palindromes.push(w);
+						}	
+					} // single characters can't be palindrones
 				
 				}
 			}
