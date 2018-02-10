@@ -132,10 +132,12 @@ function clean(txt){
 		if(mostFrequentWords.length <10){
 			// the remaining words are in temp, add it to most frequent word
 			temp.sort();
-			let n = 10-mostFrequentWords.length
-			for(let i=0; i<n; i++){
-				let t = temp[i];
+			for(let t of temp){
 				mostFrequentWords.push(t[0] + "("+t[1]+")");	
+
+				if(mostFrequentWords.length === 10){
+					break;
+				}
 			}
 		}
 		
