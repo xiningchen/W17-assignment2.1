@@ -111,10 +111,14 @@ function clean(txt){
 		allWords.sort(lengthComparison);
 		count=0;
 		for(let w of allWords){
-			longestWords.push(w);
-			count +=1;
-			if(count===10){
-				break;
+			if(w in longestWords){
+				// skip!
+			}else{
+				longestWords.push(w);
+				count +=1;
+				if(count===10){
+					break;
+				}	
 			}
 		}
 		
