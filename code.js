@@ -64,7 +64,7 @@ function clean(txt){
 				nWords += words.length;
 				
 				// process each word
-				for(let w of wSorted){
+				for(let w of words){
 					nCharWords += w.length;
 					
 					if(w in freqWords){
