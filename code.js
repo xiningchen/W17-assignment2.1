@@ -151,7 +151,7 @@ function clean(txt){
 		nNonEmptyLines, //*
 		avgWordLength, //* 
 		maxLineLength, //*
-		//longestWords
+		longestWords,
 		mostFrequentWords
 	};
 }
