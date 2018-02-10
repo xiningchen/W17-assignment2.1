@@ -28,7 +28,6 @@ function numChar(txt){
 
 // function for cleaning/normalizing text 
 function clean(txt){
-	txt=txt.trim();
 	let nChars = txt.length;
 	
 	let lines = txt.split("\n");
@@ -41,49 +40,54 @@ function clean(txt){
 	let longestWordLength=0;
 	let longestWords=[];
 	
-	// loop through every line and clean while tracking non-empty lines
-	for(let line of lines){
-		if(line.trim().length != 0){
-			nNonEmptyLines+=1;
+	if(txt.length===0){
+		// skip all process and set stuff to 0
+		nlines=0;
+	}else{
+		// loop through every line and clean while tracking non-empty lines
+		for(let line of lines){
+			if(line.trim().length != 0){
+				nNonEmptyLines+=1;
 			
-			// check line length
-			if(line.length>maxLineLength){
-				maxLineLength=line.length;
-			}
-			// since it's not empty, clean up words using regular expressions
-			line = line.toLowerCase();
-			line = line.replace(/\W|\_/g, " ");
-			line = line.replace(/\s+/g, " ");
-			
-			let words = line.trim().split(" ");
-			nWords += words.length;
-			
-/*
-	Q1: Why is his longest words contain different lengths? is it longest word in each line???
-	Q2: 
-	
-*/
-			// sort words
-			let wSorted = words.sort(lengthComparison);
-			
-			// process each word
-			for(let w of wSorted){
-				nCharWords += w.length;
-				if(w.length > longestWordLength){
-					// set new longest word length
-					longestWordLength = w.length;
-					// reset current record of longest words
-					longestWords=[];
+				// check line length
+				if(line.length>maxLineLength){
+					maxLineLength=line.length;
 				}
-				if(w.length === longestWordLength){
-					// add to longest words array
-					longestWords.push(w);
+				// since it's not empty, clean up words using regular expressions
+				line = line.toLowerCase();
+				line = line.replace(/\W|\_/g, " ");
+				line = line.replace(/\s+/g, " ");
+			
+				let words = line.trim().split(" ");
+				nWords += words.length;
+			
+	/*
+		Q1: Why is his longest words contain different lengths? is it longest word in each line???
+		Q2: 
+	
+	*/
+				// sort words
+				let wSorted = words.sort(lengthComparison);
+			
+				// process each word
+				for(let w of wSorted){
+					nCharWords += w.length;
+					if(w.length > longestWordLength){
+						// set new longest word length
+						longestWordLength = w.length;
+						// reset current record of longest words
+						longestWords=[];
+					}
+					if(w.length === longestWordLength){
+						// add to longest words array
+						longestWords.push(w);
+					}
 				}
 			}
 		}
-	}
 	
-	let avgWordLength = nCharWords/nWords;
+		let avgWordLength = nCharWords/nWords;
+	}
 	
 	return {
 		nChars, //*
