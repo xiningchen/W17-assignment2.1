@@ -53,7 +53,7 @@ function clean(txt){
 			nWords += words.length;
 			
 			// process each word
-			for(let w of word){
+			for(let w of words){
 				nCharWords += w.length;
 			}
 		}
