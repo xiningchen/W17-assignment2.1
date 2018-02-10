@@ -2,10 +2,10 @@
 // this is just a stub for a function you need to implement
 //
 function getStats(txt) {
-	// filter txt
+
+	// get stats
 	let stats = clean(txt);
 	
-	// 
 
     return {
         nChars: stats.nChars,
@@ -20,7 +20,7 @@ function getStats(txt) {
     };
 }
 
-
+// cleans up text and gets stats function 
 function clean(txt){
 	let nChars = txt.length;
 	
@@ -31,7 +31,6 @@ function clean(txt){
 	let nNonEmptyLines=0;
 	let nWords=0;
 	let nCharWords=0;
-//	let longestWordLength=0;
 	let longestWords=[];
 	let avgWordLength=0;
 	let freqWords={};
@@ -123,8 +122,6 @@ function clean(txt){
 				// clear temp
 				temp = [];
 			}
-
-			
 			temp.push([a[1], a[0]]);
 		}
 
@@ -162,21 +159,15 @@ function clean(txt){
 			}
 		}
 		
-/*
-			1) Palindromes
-			2) most frequent words
-			3) longest words
-*/
-		
 	}
 	
 	return {
-		nChars, //*
-		nWords, //*
-		nLines, //*
-		nNonEmptyLines, //*
-		avgWordLength, //* 
-		maxLineLength, //*
+		nChars, 
+		nWords, 
+		nLines, 
+		nNonEmptyLines, 
+		avgWordLength,  
+		maxLineLength, 
 		longestWords,
 		mostFrequentWords, 
 		palindromes
@@ -201,6 +192,7 @@ lengthComparison = function(w1, w2){
 	}
 }
 
+// comparison in decending order of input value
 decendingOrder = function(w1, w2){
 	if(w1 > w2){
 		return -1
